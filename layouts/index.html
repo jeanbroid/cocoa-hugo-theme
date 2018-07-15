@@ -7,6 +7,38 @@
                     {{ .Content }}
                 </div>
             {{ end }}
+
+			{{ range where .Data.Pages "Type" "homepage" }}
+				<article>
+				<div class="page-heading">{{ .Title }}</div>
+				<div class="content">
+					{{ .Content }}
+				</div>
+			</article>
+			<br/>
+			<br/>
+			{{ end }}
+
+            {{ $totalpubliscount := len (where .Data.Pages "Section" "publications") }}
+            {{ $latestpubliscount := .Site.Params.latestpubliscount | default $totalpubliscount }}
+            {{ if gt $latestpubliscount 0 }}
+                <div class="page-heading">{{ i18n "latestPublications" }}</div>
+                <ul>
+                    {{ range (first $latestpubliscount (where .Data.Pages.ByPublishDate.Reverse "Section" "publications")) }}
+                        {{ partial "li-publication.html" . }}
+                    {{ end }}
+                    {{ if gt $totalpubliscount $latestpubliscount }}
+                        {{ range where .Site.Menus.main "Identifier" "publications" }}
+                            <li class="publi-item post-item no-bullet">
+                                <a id="see-more" {{ printf "href=%q " .URL | safeHTMLAttr }}><span>See more&hellip;</span></a>
+                            </li>
+                        {{ end }}
+                    {{ end }}
+                </ul>
+			<br/>
+			<br/>
+            {{ end }}
+
             {{ $totalpostscount := len (where .Data.Pages "Section" "blog") }}
             {{ $latestpostscount := .Site.Params.latestpostscount | default $totalpostscount }}
             {{ if gt $latestpostscount 0 }}
@@ -28,4 +60,3 @@
     </div>
 </section>
 {{ partial "footer.html" . }}
-

@@ -18,3 +18,15 @@
 
 - id: backToPosts
   translation: "Back to posts"
+
+- id: backToPublications
+  translation: "Back to publications"
+
+- id: publicationsHeading
+  translation: "Publications"
+
+- id: latestPublications
+  translation: "Latest Publications"
+
+- id: in
+  translation: "in"
