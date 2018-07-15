@@ -62,7 +62,27 @@
         {{ end }}
 
         {{ if .Site.Params.linkedin }}
-            <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener"><img class="icon" src="/img/linkedin.svg" alt="linkedin" /></a>
+			<a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener">
+				<i class="fab fa-linkedin header-link"></i>
+			</a>
+		{{ end }}
+
+        {{ if .Site.Params.googlescholar }}
+		<a href="{{ .Site.Params.googlescholar }}" target="_blank" rel="noopener">
+			<i class="ai ai-google-scholar header-link"></i>
+		</a>
+        {{ end }}
+
+        {{ if .Site.Params.dblp }}
+		<a href="{{ .Site.Params.dblp }}" target="_blank" rel="noopener">
+			<i class="ai ai-dblp header-link"></i>
+		</a>
+        {{ end }}
+
+        {{ if .Site.Params.hal }}
+		<a href="{{ .Site.Params.hal }}" target="_blank" rel="noopener">
+			<i class="ai ai-hal header-link"></i>
+		</a>
         {{ end }}
 
         {{ if .Site.Params.facebook }}
