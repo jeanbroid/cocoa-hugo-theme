@@ -32,11 +32,15 @@
 
 {{ else }}
 
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/pygments.css">
-    <link rel="stylesheet" href="/css/academicons.min.css">
-    <link rel="stylesheet" href="/css/fontawesome-all.min.css">
+	{{ $reset := resources.Get "css/reset.css" }}
+	{{ $syntax := resources.Get "css/pygments.css" }}
+	{{ $academicons := resources.Get "css/academicons.min.css" }}
+	{{ $fontawesome := resources.Get "css/fontawesome-all.min.css" }}
+	{{ $style := slice $reset $syntax $academicons $fontawesome | resources.Concat "bundle.css" | minify | fingerprint }}
+
+	<link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
     <link rel="stylesheet" href="/css/main.css">
+
     {{range .Site.Params.extracssfiles}}
         <link rel="stylesheet" href="{{.}}">
     {{end}}
