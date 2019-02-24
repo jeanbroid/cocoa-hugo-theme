@@ -465,7 +465,8 @@ section.main .container.f04 .content .detail {
     margin-bottom: 30px;
   }
 }
-section.main .container .content .post-item {
+section.main .container .content .post-item,
+section.main .container .content .publi-item {
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;

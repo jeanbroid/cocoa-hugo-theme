@@ -1,6 +1,3 @@
-<li class="publi-item post-item">
-	{{/*
-	-&nbsp;<span><a href="{{ .Permalink }}">{{ .Title | truncate 64 }}</a> {{ i18n "in" }} {{ .Params.publishedInAbbr }}</span>
-	*/}}
-	-&nbsp;<span><a href="{{ .Permalink }}">{{ .Title | truncate 64 }}</a> ({{ .Params.publishedInAbbr }})</span>
+<li class="publi-item">
+	<a href="{{ .Permalink }}">{{ .Title | truncate 64 }} ({{ .Params.publishedInAbbr }})</a>
 </li>
